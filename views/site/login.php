@@ -39,5 +39,6 @@ use app\models\LoginForm;
 
     <?php ActiveForm::end(); ?>
 
+    <?= $_SERVER['REMOTE_ADDR'] ?>
 </div>
 
