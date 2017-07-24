@@ -251,7 +251,7 @@ class SiteController extends Controller
                     $appContetn = new AppContent();
                     $appContetn->id_app = $lastId->id;
                     $appContetn->id_user = $_SESSION['User']['id'];
-                    $appContetn->content = Html::encode($model->content);
+                    $appContetn->content = $model->content;
                     $appContetn->note = Html::encode($model->note);
                     $appContetn->id_fio = Fio::getId($model->fio);
                     $appContetn->ip =  $model->ip == '10.224.' ? '' : Html::encode(str_replace(',', '.', $model->ip));
