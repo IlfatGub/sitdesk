@@ -19,8 +19,8 @@ use yii\helpers\Html;
     $content .= 'Ip: '.$iIp."<br>";
     $content .= $iContent;
 }  ?>
-<li id="hs_<?= $iId ?>"  class="sidebar-brand" style=" font-size: 10pt; border-bottom: 1px dashed silver" data-toggle="tooltip" data-placement="right" title="<?=   nl2br(Html::encode($content)) ?>">
-    <div class="<?= $review ?>" style="margin-left: 10px; <?= isset($style) ? $style : '' ?>">
+<li id="hs_<?= $iId ?>"  class="sidebar-brand" style=" font-size: 10pt; border-bottom: 1px dashed silver" data-toggle="tooltip" data-placement="right" title="<?=nl2br(Html::encode($content))?>">
+    <div class="<?= $review ?>" style="margin-left: 10px; <?= isset($style) ? $style : '' ?>" >
         <a href="<?= Url::to(['/index', 'id'=>$iId, 'search' =>isset($_GET['search']) ? $_GET['search'] : null, '#' => 'hs_'.$iId])?>">
             <div style="display: inline-block">
                 <div class="<?= $danger ?>"  style="width: 300px">
