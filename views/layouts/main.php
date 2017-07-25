@@ -12,6 +12,8 @@ use yii\widgets\Pjax;
 use app\modules\admin\models\Login;
 
 AppAsset::register($this);
+
+//Yii::$app->session->open();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

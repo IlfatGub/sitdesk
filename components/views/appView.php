@@ -20,7 +20,7 @@ use yii\helpers\Html;
     $content .= $iContent;
 }  ?>
 
-<?php if($_SESSION['User']['settings_menu'] == 1){ ?>
+<?php if(Yii::$app->session['User']['settings_menu'] == 1){ ?>
     <style>
 
         #wrapper {
@@ -46,12 +46,12 @@ use yii\helpers\Html;
                         <strong><span class="<?= $icon.' '.$danger ?>"></span> <?= $iId ?></strong>. <small style="color: slategray">  <?=  \app\models\Sitdesk::fio($iUsername, 1) ?></small>
                         <div style="float: right;"><small><?= MyDate::getDate($iDate) ?></small></div>
                     </div>
-                    <?php if( $_SESSION['User']['menu'] == 0){?>
+                    <?php if( Yii::$app->session['User']['menu'] == 0){?>
                         <div >
                             <small> <?= $iPodr ?> - <?= $iProblem ?></small>
                         </div>
                     <?php } ?>
-                    <?php if( $_SESSION['User']['menu'] == 2){?>
+                    <?php if( Yii::$app->session['User']['menu'] == 2){?>
                         <div >
                             <small> <?= $iPodr ?> - <?= $iProblem ?></small>
                         </div>
@@ -73,12 +73,12 @@ use yii\helpers\Html;
                         <strong><span class="<?= $icon.' '.$danger ?>"></span> Заявка <?= $iId ?></strong>. <small style="color: slategray">  <?=  \app\models\Sitdesk::fio($iUsername) ?></small>
                         <div style="float: right;"><small><?= MyDate::getDate($iDate) ?></small></div>
                     </div>
-                    <?php if( $_SESSION['User']['menu'] == 0){?>
+                    <?php if( Yii::$app->session['User']['menu'] == 0){?>
                     <div >
                         <small> <?= $iPodr ?> - <?= $iProblem ?></small>
                     </div>
                     <?php } ?>
-                    <?php if( $_SESSION['User']['menu'] == 2){?>
+                    <?php if(Yii::$app->session['User']['menu'] == 2){?>
                         <div >
                             <small> <?= $iPodr ?> - <?= $iProblem ?></small>
                         </div>

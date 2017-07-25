@@ -2,6 +2,10 @@
 
 namespace app\modules\admin\models;
 
+use Yii;
+use yii\bootstrap;
+
+Yii::$app->session->open();
 
 class Login extends \yii\db\ActiveRecord
 {
@@ -46,19 +50,33 @@ class Login extends \yii\db\ActiveRecord
      * Присваиваем глобальные переменные для Пользователя
      */
     public function userSettings($role){
-        $_SESSION['User']['id'] = $role->id;
-        $_SESSION['User']['login'] = $role->login;
-        $_SESSION['User']['username'] = $role->username;
-        $_SESSION['User']['role'] = $role->role;
-        $_SESSION['User']['close'] = $role->close;
-        $_SESSION['User']['count'] = $role->count;
-        $_SESSION['User']['menu'] = $role->menu;
-        $_SESSION['User']['settings_comment'] = $role->settings_comment;
-        $_SESSION['User']['assist'] = $role->assist;
-        $_SESSION['User']['visible'] = $role->visible;
-        $_SESSION['User']['depart'] = $role->depart;
-        $_SESSION['User']['settings_menu'] = $role->settings_menu;
-        $_SESSION['User']['comment_list'] = $role->comment_list;
+        $_SESSION['User']['id'] =                   $role->id;
+        $_SESSION['User']['login'] =                $role->login;
+        $_SESSION['User']['username'] =             $role->username;
+        $_SESSION['User']['role'] =                 $role->role;
+        $_SESSION['User']['close'] =                $role->close;
+        $_SESSION['User']['count'] =                $role->count;
+        $_SESSION['User']['menu'] =                 $role->menu;
+        $_SESSION['User']['settings_comment'] =     $role->settings_comment;
+        $_SESSION['User']['assist'] =               $role->assist;
+        $_SESSION['User']['visible'] =              $role->visible;
+        $_SESSION['User']['depart'] =               $role->depart;
+        $_SESSION['User']['settings_menu'] =        $role->settings_menu;
+        $_SESSION['User']['comment_list'] =         $role->comment_list;
+
+//        Yii::$app->session['User']['id']                    = $role->id;
+//        Yii::$app->session['User']['login']                 = $role->login;
+//        Yii::$app->session['User']['username']              = $role->username;
+//        Yii::$app->session['User']['role']                  = $role->role;
+//        Yii::$app->session['User']['close']                 = $role->close;
+//        Yii::$app->session['User']['count']                 = $role->count;
+//        Yii::$app->session['User']['menu']                  = $role->menu;
+//        Yii::$app->session['User']['settings_comment']      = $role->settings_comment;
+//        Yii::$app->session['User']['assist']                = $role->assist;
+//        Yii::$app->session['User']['visible']               = $role->visible;
+//        Yii::$app->session['User']['depart']                = $role->depart;
+//        Yii::$app->session['User']['settings_menu']         = $role->settings_menu;
+//        Yii::$app->session['User']['comment_list']          = $role->comment_list;
     }
 
     public function userSettingsUnset(){
@@ -75,6 +93,20 @@ class Login extends \yii\db\ActiveRecord
         $_SESSION['User']['visible'] =          null;
         $_SESSION['User']['depart'] =           null;
         $_SESSION['User']['comment_list'] =     null;
+
+//        Yii::$app->session['User']['id']                    = null;
+//        Yii::$app->session['User']['login']                 = null;
+//        Yii::$app->session['User']['username']              = null;
+//        Yii::$app->session['User']['role']                  = null;
+//        Yii::$app->session['User']['close']                 = null;
+//        Yii::$app->session['User']['count']                 = null;
+//        Yii::$app->session['User']['menu']                  = null;
+//        Yii::$app->session['User']['settings_comment']      = null;
+//        Yii::$app->session['User']['assist']                = null;
+//        Yii::$app->session['User']['visible']               = null;
+//        Yii::$app->session['User']['depart']                = null;
+//        Yii::$app->session['User']['settings_menu']         = null;
+//        Yii::$app->session['User']['comment_list']          = null;
 
     }
 
