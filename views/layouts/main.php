@@ -41,7 +41,7 @@ AppAsset::register($this);
             <?php if($_SESSION['User']['id']){ ?>
             <div class="col-lg-12 text-center" style="display: inline-block; background: #E4E4E4; font-size: 14pt; margin-bottom: 5px">
                 <li class="dropdown" style="display: inline-block; background: #E4E4E4; font-size: 14pt; margin-bottom: 5px">
-                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><?=$_SESSION['User']['username']?><b class="caret"></b></a>
+                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><?=\app\models\Sitdesk::fio($_SESSION['User']['username']) ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li role="presentation"><a  href="<?= Url::to(['index', 'search' => 'Все']) ?>" >Все</a></li>
                         <li role="presentation" class="divider"></li>
@@ -65,9 +65,8 @@ AppAsset::register($this);
             <li>
                 <?php  ActiveForm::begin([ 'action' => ['/site/index'], 'method' => 'get'] ); ?>
                 <div class="input-group input-group-sm" style="margin: 10px">
-
                     <?= Html::input('search', 'search', '', [
-                        'class' =>'form-control search-width input-sm input',
+                        'class' =>'form-control search-width input-sm ',
                         'id' => 'search',
                         ]) ?>
                     <span class="input-group-btn" style="width: 100%;">

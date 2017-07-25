@@ -105,16 +105,19 @@ $message .= "
 
     /*
      * ФИО
+     * type = 1     -       выводи только Имени
      */
-    public function fio($fio){
+    public function fio($fio, $type = null){
         if(isset($fio)){
             $var = explode(" ", trim($fio));
-//            $text = $var[0].'.'.mb_substr($var[1], 0, 1, 'UTF-8').'.'. mb_substr($var[2], 0, 1, 'UTF-8');
-            $text = $var[0].' '.$var[1];
+            if($type == 1){
+                $text = $var[1].'.'. mb_substr($var[0], 0, 1, 'UTF-8');
+            }else{
+                $text = $var[0].' '.$var[1];
+            }
         }else{
             $text = $fio;
         }
-
         return $text;
     }
 

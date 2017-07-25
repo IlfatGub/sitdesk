@@ -19,30 +19,76 @@ use yii\helpers\Html;
     $content .= 'Ip: '.$iIp."<br>";
     $content .= $iContent;
 }  ?>
-<li id="hs_<?= $iId ?>"  class="sidebar-brand" style=" font-size: 10pt; border-bottom: 1px dashed silver" data-toggle="tooltip" data-placement="right" title="<?=nl2br(Html::encode($content))?>">
-    <div class="<?= $review ?>" style="margin-left: 10px; <?= isset($style) ? $style : '' ?>" >
-        <a href="<?= Url::to(['/index', 'id'=>$iId, 'search' =>isset($_GET['search']) ? $_GET['search'] : null, '#' => 'hs_'.$iId])?>">
-            <div style="display: inline-block">
-                <div class="<?= $danger ?>"  style="width: 300px">
-<!--                    <strong><span class="--><?//= $icon.' '.$danger ?><!--"></span> --><?//= $iPriority ?><!-- Заявка --><?//= $iId ?><!--</strong>. <small style="color: slategray">--><?//= $iLogin ?><!--@snhrs.ru</small>-->
-                    <strong><span class="<?= $icon.' '.$danger ?>"></span> Заявка <?= $iId ?></strong>. <small style="color: slategray">  <?=  \app\models\Sitdesk::fio($iUsername) ?></small>
-                    <div style="float: right;"><small><?= MyDate::getDate($iDate) ?></small></div>
+
+<?php if($_SESSION['User']['settings_menu'] == 1){ ?>
+    <style>
+
+        #wrapper {
+            padding-left: 280px;
+        }
+
+        #sidebar-wrapper {
+            width: 280px !important;
+        }
+        .sidebar-nav{
+            width: 280px !important;
+        }
+        .search-width{
+            width: 210px !important;
+        }
+
+    </style>
+    <li id="hs_<?= $iId ?>"  class="sidebar-brand" style=" font-size: 10pt; border-bottom: 1px dashed silver" data-toggle="tooltip" data-placement="right" title="<?=nl2br(Html::encode($content))?>">
+        <div class="<?= $review ?>" style="margin-left: 10px; <?= isset($style) ? $style : '' ?>" >
+            <a href="<?= Url::to(['/index', 'id'=>$iId, 'search' =>isset($_GET['search']) ? $_GET['search'] : null, '#' => 'hs_'.$iId])?>">
+                <div style="display: inline-block">
+                    <div class="<?= $danger ?>"  style="width: 220px">
+                        <strong><span class="<?= $icon.' '.$danger ?>"></span> <?= $iId ?></strong>. <small style="color: slategray">  <?=  \app\models\Sitdesk::fio($iUsername, 1) ?></small>
+                        <div style="float: right;"><small><?= MyDate::getDate($iDate) ?></small></div>
+                    </div>
+                    <?php if( $_SESSION['User']['menu'] == 0){?>
+                        <div >
+                            <small> <?= $iPodr ?> - <?= $iProblem ?></small>
+                        </div>
+                    <?php } ?>
+                    <?php if( $_SESSION['User']['menu'] == 2){?>
+                        <div >
+                            <small> <?= $iPodr ?> - <?= $iProblem ?></small>
+                        </div>
+                        <div>
+                            <small> <?= $iFio ?> <?= $iIp == '' ? '' : ' - '.$iIp ?></small>
+                        </div>
+                    <?php } ?>
                 </div>
-                <?php if( $_SESSION['User']['menu'] == 0){?>
-                <div >
-                    <small> <?= $iPodr ?> - <?= $iProblem ?></small>
-                </div>
-                <?php } ?>
-                <?php if( $_SESSION['User']['menu'] == 2){?>
+            </a>
+        </div>
+    </li>
+<?php }else{ ?>
+    <li id="hs_<?= $iId ?>"  class="sidebar-brand" style=" font-size: 10pt; border-bottom: 1px dashed silver" data-toggle="tooltip" data-placement="right" title="<?=nl2br(Html::encode($content))?>">
+        <div class="<?= $review ?>" style="margin-left: 10px; <?= isset($style) ? $style : '' ?>" >
+            <a href="<?= Url::to(['/index', 'id'=>$iId, 'search' =>isset($_GET['search']) ? $_GET['search'] : null, '#' => 'hs_'.$iId])?>">
+                <div style="display: inline-block">
+                    <div class="<?= $danger ?>"  style="width: 300px">
+    <!--                    <strong><span class="--><?//= $icon.' '.$danger ?><!--"></span> --><?//= $iPriority ?><!-- Заявка --><?//= $iId ?><!--</strong>. <small style="color: slategray">--><?//= $iLogin ?><!--@snhrs.ru</small>-->
+                        <strong><span class="<?= $icon.' '.$danger ?>"></span> Заявка <?= $iId ?></strong>. <small style="color: slategray">  <?=  \app\models\Sitdesk::fio($iUsername) ?></small>
+                        <div style="float: right;"><small><?= MyDate::getDate($iDate) ?></small></div>
+                    </div>
+                    <?php if( $_SESSION['User']['menu'] == 0){?>
                     <div >
                         <small> <?= $iPodr ?> - <?= $iProblem ?></small>
                     </div>
-                    <div>
-                        <small> <?= $iFio ?> <?= $iIp == '' ? '' : ' - '.$iIp ?></small>
-                    </div>
-                <?php } ?>
-            </div>
-        </a>
-    </div>
-</li>
+                    <?php } ?>
+                    <?php if( $_SESSION['User']['menu'] == 2){?>
+                        <div >
+                            <small> <?= $iPodr ?> - <?= $iProblem ?></small>
+                        </div>
+                        <div>
+                            <small> <?= $iFio ?> <?= $iIp == '' ? '' : ' - '.$iIp ?></small>
+                        </div>
+                    <?php } ?>
+                </div>
+            </a>
+        </div>
+    </li>
+<?php } ?>
 

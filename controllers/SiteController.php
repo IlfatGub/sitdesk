@@ -203,6 +203,9 @@ class SiteController extends Controller
         return  $this->redirect(['index', 'search' => $search]);
     }
 
+    /*
+     * Добавление, вывод
+     */
     public function actionIndex($search = null)
     {
         $model = new App();
@@ -252,7 +255,7 @@ class SiteController extends Controller
                     $appContetn->id_app = $lastId->id;
                     $appContetn->id_user = $_SESSION['User']['id'];
                     $appContetn->content = $model->content;
-                    $appContetn->note = Html::encode($model->note);
+                    $appContetn->note = $model->note;
                     $appContetn->id_fio = Fio::getId($model->fio);
                     $appContetn->ip =  $model->ip == '10.224.' ? '' : Html::encode(str_replace(',', '.', $model->ip));
                     $appContetn->phone = Html::encode($model->phone);
