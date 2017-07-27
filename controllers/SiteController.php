@@ -458,18 +458,18 @@ class SiteController extends Controller
         if($status == 3){
             if(AppComment::appComment($_GET['id'])){
                 App::Status($id, $status);
-                History::newHistory($id, $_SESSION['User']['id'], $status+3, App::findOne($id)->id_user);
+                History::newHistory($id, Yii::$app->session['User']['id'], $status+3, App::findOne($id)->id_user);
             }
             $ret = $this->redirect(['index', 'search' => $search]);
         }elseif($status == 4){
             App::Status($id, 3, 1);
-            History::newHistory($id, $_SESSION['User']['id'], $status+3, App::findOne($id)->id_user);
+            History::newHistory($id, Yii::$app->session['User']['id'], $status+3, App::findOne($id)->id_user);
             Comment::commentAdd($id, 'Выполнено');
             App::appReview($id, 1);
             $ret = $this->redirect(['index', 'search' => $search]);
         }else{
             App::Status($id, $status);
-            History::newHistory($id, $_SESSION['User']['id'], $status+3, App::findOne($id)->id_user);
+            History::newHistory($id, Yii::$app->session['User']['id'], $status+3, App::findOne($id)->id_user);
             $ret = $status == 3 ? $this->redirect(['index', 'search' => $search]) : $this->redirect(['index', 'id' => $id, 'search' => $search]);
         }
         return $ret;

@@ -46,7 +46,7 @@ class Comment extends \yii\db\ActiveRecord
         $model = new AppComment();
         $model->id_app = $id;
         $model->comment = Comment::getId($comment);
-        $model->id_user = $_SESSION['User']['id'];
+        $model->id_user = isset($_SESSION['User']['id'])? $_SESSION['User']['id'] : App::findOne($id)->id_user ;
         $model->date = MyDate::getTimestamp(date('Y-m-d H:i:s'));
         $model->save();
     }

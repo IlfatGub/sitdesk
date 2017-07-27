@@ -52,7 +52,7 @@ class History extends \yii\db\ActiveRecord
     public function newHistory($id, $user, $status, $login = null){
         $history = new History();
         $history->id_app = $id;
-        $history->id_user = $user;
+        $history->id_user = isset($user) ? $user : App::findOne($id)->id_user;
         $history->id_history = $status;
         $history->comment = $login;
         $history->date = MyDate::getTimestamp(date('Y-m-d H:i:s'));

@@ -222,16 +222,17 @@ class App extends \yii\db\ActiveRecord
         $review = App::findOne($id);
         if($type == 1){
             if($review->review == 1){
-                if($review->id_user == $_SESSION['User']['id']){
+                if($review->id_user == isset($_SESSION['User']['id']) ? $_SESSION['User']['id'] : App::findOne($id)->id_user){
                     $review->review = null;
                     $review->save();
                 }
             }
         }else{
-            if($review->id_user == $_SESSION['User']['id']){
+            if($review->id_user == isset($_SESSION['User']['id']) ? $_SESSION['User']['id'] : App::findOne($id)->id_user){
                 $review->review = 1;
                 $review->save();
             }
         }
     }
 }
+
